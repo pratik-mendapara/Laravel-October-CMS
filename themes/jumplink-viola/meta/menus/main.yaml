@@ -1,0 +1,46 @@
+name: main
+items:
+    -
+        title: About
+        nesting: '0'
+        type: static-page
+        code: about
+        reference: home
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: about
+            isExternal: '0'
+    -
+        title: Service
+        nesting: '0'
+        type: static-page
+        code: services
+        reference: home
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: services
+            isExternal: '0'
+    -
+        title: Offer
+        nesting: '0'
+        type: static-page
+        code: offer
+        reference: home
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: offer
+            isExternal: '0'
+    -
+        title: Contact
+        nesting: '0'
+        type: static-page
+        code: contact
+        reference: home
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: contact
+            isExternal: '0'

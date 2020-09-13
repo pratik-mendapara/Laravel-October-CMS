@@ -1,0 +1,28 @@
+[viewBag]
+snippetCode = "contact"
+snippetName = "contact"
+snippetProperties[headertext][title] = "Header Text"
+snippetProperties[headertext][type] = "string"
+snippetProperties[headertext][default] = "Contact"
+snippetProperties[headertext][options][] = ""
+==
+<div class="bg-gray-lighter" id="contact" data-target="#contact">
+    <header class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 push-md-6">
+                    <h2 class="text-center">{{headertext}}</h2>
+                    
+                    {% set icon = 'assets/images/icons/' ~ this.theme.color ~ '/contact.svg' %}
+                    <img class="mx-auto pb-2" src="{{ icon | theme }}">
+                    <div class="mb-3">
+                        {% content 'contact.htm' %}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 pull-md-6">
+                    {% partial 'contactForm/default' %}
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

@@ -1,0 +1,24 @@
+1599903454a:1:{s:10:"author.htm";a:10:{s:8:"fileName";s:10:"author.htm";s:7:"content";s:483:"title = "author"
+url = "/author"
+layout = "default"
+is_hidden = 0
+
+[slideshow]
+slideshow = 1
+numberOfSlide = 5
+==
+{% put jumbotron %}
+  <h1 class="display-3">Hambern</h1>
+  <p class="lead">The template is created by Mattias "Hambern" Hamberg</p>
+  <p>Please visit my homepage at <a href="http://hambergmedia.se">hambergmedia.se</a></p>
+{% endput %}
+
+{% component 'slideshow' %}
+<!-- <div data-type="youtube" data-video-id="Bf4HAse1DOQ" data-plyr='{"autoplay":true}'></div> -->";s:5:"mtime";i:1599902852;s:6:"markup";s:369:"{% put jumbotron %}
+  <h1 class="display-3">Hambern</h1>
+  <p class="lead">The template is created by Mattias "Hambern" Hamberg</p>
+  <p>Please visit my homepage at <a href="http://hambergmedia.se">hambergmedia.se</a></p>
+{% endput %}
+
+{% component 'slideshow' %}
+<!-- <div data-type="youtube" data-video-id="Bf4HAse1DOQ" data-plyr='{"autoplay":true}'></div> -->";s:4:"code";N;s:5:"title";s:6:"author";s:3:"url";s:7:"/author";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:9:"slideshow";a:2:{s:9:"slideshow";s:1:"1";s:13:"numberOfSlide";s:1:"5";}}}

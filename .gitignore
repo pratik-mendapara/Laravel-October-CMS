@@ -1,3 +1,6 @@
+.DS_Store
+*.log
+
 /vendor/
 node_modules/
 npm-debug.log

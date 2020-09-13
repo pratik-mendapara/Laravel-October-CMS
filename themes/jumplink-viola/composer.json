@@ -1,0 +1,17 @@
+{
+    "name": "JumpLinkNetwork/viola-theme",
+    "version": "2.1.1",
+    "description": "One Page October Theme for Medical Professionals",
+    "type": "october-theme",
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pascal Garber",
+            "email": "pascal@jumplink.eu"
+        }
+    ]
+}

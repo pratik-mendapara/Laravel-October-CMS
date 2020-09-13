@@ -1,0 +1,43 @@
+[viewBag]
+snippetCode = "offer"
+snippetName = "offer"
+snippetProperties[block01title][title] = "Block 01 Title"
+snippetProperties[block01title][type] = "string"
+snippetProperties[block01title][default] = "No Waiting Period"
+snippetProperties[block01title][options][] = ""
+snippetProperties[block02title][title] = "Block 02 Title"
+snippetProperties[block02title][type] = "string"
+snippetProperties[block02title][default] = "Reminder"
+snippetProperties[block02title][options][] = ""
+snippetProperties[headertext][title] = "Header Text"
+snippetProperties[headertext][type] = "string"
+snippetProperties[headertext][default] = "Offer"
+snippetProperties[headertext][options][] = ""
+==
+<div id="offer" data-target="#offer">
+    <div class="container text-center py-5">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h2 class="mb-3">{{headertext}}</h2>
+            </div>
+            
+            {% for i in 1..2 %}
+                <div class="col-xs-12 col-md-6">
+                    {% set icon = 'assets/images/icons/' ~ this.theme.color ~ '/offer_block_0' ~ i ~ '.svg' %}
+                    <img class="center-block pb-2" src="{{ icon |theme }}">
+                    {% set title = 'offer/block_0' ~ i ~ '.htm' %}
+                    
+                    {% if i == 1 %}
+                        <h3 class="text-center">{{ block01title }}</h3>
+                    {% elseif i == 2 %}
+                        <h3 class="text-center">{{ block02title }}</h3>
+                    {% endif %}
+                    
+                    {% set content = 'offer/block_0' ~ i ~ '.htm' %}
+                    {% content content %}
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>

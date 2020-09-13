@@ -1,0 +1,90 @@
+description = "Default layout"
+
+[staticPage]
+==
+<?php
+// TODO wird diese funktion zweimal aufgerufen?
+function onMailSent() {
+    
+    $formVars = [
+        'receivermail' => post('receivermail'),
+        'receivername' => post('receivername'),
+        'succeesstext' => post('succeesstext'),
+        'receiverregard' => post('receiverregard'),
+        'mailtemplate' => post('mailtemplate'),
+        'name' => post('name'),
+        'email' => post('email'),
+        'regard' => post('regard'),
+        'sendermessage' => post('message'),
+    ];
+    
+    $formVars['receiverregard'] = str_replace("{{name}}", $formVars['name'], $formVars['receiverregard']);
+    $formVars['receiverregard'] = str_replace("{{regard}}", $formVars['regard'], $formVars['receiverregard']);
+    
+    $buildOwnerMessage = function ($message) use ($formVars) {
+        // TODO use email and name from backend or theme settings
+        $message->to($formVars['receivermail'], $formVars['receivername']);
+        $message->subject($formVars['receiverregard']);
+    };
+
+    // mail to site owner
+    Mail::send($formVars['mailtemplate'], $formVars, $buildOwnerMessage);
+      
+    $this['result'] = $formVars['succeesstext'];
+}
+?>
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ this.theme.site_name }} - {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="Pascal Garber">
+        <meta http-equiv="language" content="deutsch, de">
+        <meta name="Keywords" content="Viola,Garber,Tierheilpraxis,Tierheilpraktikerin,Cuxhaven,Klassische Homöopathie,Homöopathie,Phytotherapie,Akupunktur,Praxis,Hausbesuch,Naturheilverfahren">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        {% styles %}
+        {% if this.theme.color %}
+            {% set style = 'assets/scss/theme-' ~ this.theme.color ~ '.scss' %}
+        {% else %}
+            {% set style = 'assets/scss/theme-blue.scss' %}
+        {% endif %}
+        <link href="{{ [style,]|theme }}" rel="stylesheet">
+    </head>
+    <body id="{{ str_studly(this.page.title) }}" data-spy="scroll">
+        
+        {# Content #}
+        <section id="layout-content">
+            {% partial 'navigation' %}
+            {% page %}
+        </section>
+
+        {# Scripts #}
+        <script src="{{ [
+            'assets/vendor/within-viewport/withinviewport.js',
+            'assets/vendor/jquery/dist/jquery.js',
+            'assets/vendor/jquery-ui/jquery-ui.js',
+            'assets/vendor/within-viewport/jquery.withinviewport.js',
+            'assets/vendor/tether/dist/js/tether.js',
+            'assets/vendor/bootstrap-backward/dist/js/bootstrap.js',
+            'assets/vendor/simpler-sidebar/dist/jquery.simpler-sidebar.js',
+            'assets/vendor/Stickyfill/dist/stickyfill.js',
+            'assets/vendor/bootstrap-validator/dist/validator.js',
+            'assets/vendor/leaflet/dist/leaflet.js',
+            
+            'assets/javascript/app.js',
+        ]|theme }}"></script>
+        
+        {% framework %}
+        
+        {# More theme variables #}
+        <script>
+            L.Icon.Default.imagePath = "/themes/{{this.theme.dirname}}/assets/vendor/leaflet/dist/images/";
+        </script>
+        {% scripts %}
+
+    </body>
+</html>
